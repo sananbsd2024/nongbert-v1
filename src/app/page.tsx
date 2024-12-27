@@ -1,6 +1,5 @@
 import { options } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
-// import UserCard from "./components/UserCard"
 import LeftSidebarPage from "./components/LeftSidebar";
 import RightContentAreaPage from "./components/RightContentArea";
 import RightSidebarPage from "./components/RightSidebar";
@@ -11,11 +10,7 @@ export default async function Home() {
 
   return (
     <>
-      {/* {session ? (
-        <UserCard user={session?.user} pagetype={"Home"} />
-      ) : (
-        <h1 className="text-5xl">You Shall Not Pass!</h1>
-      )} */}
+
 
       <div className="min-h-screen flex flex-col md:flex-row required:xl">
         {/* ส่วนซ้าย */}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface Employee {
   _id: string;
@@ -28,7 +29,7 @@ const TeacherList = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-col-3 gap-6">
         {teachers.map((teacher) => (
           <div key={teacher._id} className="p-4 border rounded shadow-md">
-            <img
+            <Image
               src={teacher.photo}
               alt={teacher.name}
               className="w-32 h-32 object-cover rounded-full mx-auto"

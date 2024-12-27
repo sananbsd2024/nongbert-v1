@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
 const images = [
@@ -33,7 +34,7 @@ export default function ImageSlider() {
 
   return (
     <div className="relative h-full w-full h-96 sm:h-96">
-      <img
+      <Image
         src={images[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
         className="w-full h-full object-cover rounded-lg"

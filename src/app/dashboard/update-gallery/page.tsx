@@ -1,29 +1,12 @@
-'use client'
+import React from 'react'
+import GalleryList from './GalleryList'
 
-import { useState } from "react";
-import GalleryList from "./GalleryList";
-import AddOrUpdateGallery from "./AddOrUpdateGallery";
-
-const GalleryPage = () => {
-  const [editingGallery, setEditingGallery] = useState(null);
-
-  const handleEdit = (gallery: any) => {
-    setEditingGallery(gallery);
-  };
-
-  const handleSave = () => {
-    setEditingGallery(null); // Reset form after save
-  };
-
+const GalleryEditPage = () => {
   return (
     <div>
-      {editingGallery ? (
-        <AddOrUpdateGallery gallery={editingGallery} onSave={handleSave} />
-      ) : (
-        <GalleryList onEdit={handleEdit} />
-      )}
+      <GalleryList />
     </div>
-  );
-};
+  )
+}
 
-export default GalleryPage;
+export default GalleryEditPage

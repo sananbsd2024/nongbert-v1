@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface File {
   name: string;
@@ -27,28 +28,49 @@ async function fetchNews(): Promise<News[]> {
 }
 
 export default async function NewsListPage() {
-  const newsList = await fetchNews();
+  let newsList: News[] = [];
+
+  try {
+    newsList = await fetchNews();
+  } catch (error) {
+    return (
+      <div className="container mx-auto p-4">
+        <h1 className="rounded text-xl font-bold mb-6 bg-red-600 p-2 mx-auto 
+        flex justify-center text-white">
+          Error fetching news
+        </h1>
+        <p className="text-center text-gray-700">
+          Please try again later.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="rounded text-xl font-bold mb-6 bg-blue-600 p-2 mx-auto 
-      flex justify-center text-white">ข่าวประชาสัมพันธ์</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      flex justify-center text-white">
+        ข่าวประชาสัมพันธ์
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {newsList.map((news) => (
           <div
             key={news._id}
             className="bg-white shadow-md rounded-lg p-6 border border-gray-200"
           >
-            <div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat">
-            <img
-              src={news.photo}
-              className="max-w-xs transition duration-300 ease-in-out hover:scale-110"
-              alt="Louvre"
-              width={300}
-            />
-          </div>
+            <div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat mx-auto">
+              <Image
+                src={news.photo}
+                alt={news.title}
+                width={300}
+                height={200}
+                className="rounded-lg transition duration-300 ease-in-out hover:scale-110"
+              />
+            </div>
+            <h2 className="text-lg font-bold mt-4">{news.title}</h2>
             <p className="text-gray-600 mb-4">{news.description}</p>
             <div>
+              <h3 className="text-sm font-semibold mb-2">Attachments:</h3>
               <ul className="list-disc list-inside">
                 {news.files.map((file, index) => (
                   <li key={index}>

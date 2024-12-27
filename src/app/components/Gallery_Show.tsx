@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface File {
   name: string;
@@ -40,7 +41,7 @@ export default async function GallerysShowListPage() {
             className="bg-white shadow-md rounded-lg p-6 border border-gray-200"
           >
             <div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat">
-            <img
+            <Image
               src={gallerys.photo}
               className="max-w-xs transition duration-300 ease-in-out hover:scale-110"
               alt="Louvre"
